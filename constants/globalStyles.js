@@ -38,4 +38,7 @@ export const globalStyles = StyleSheet.create({
     overflow: "hidden",
   },
   soldStyle: { backgroundColor: "" },
+  orangeText: {
+    color: "#F16023",
+  },
 });
