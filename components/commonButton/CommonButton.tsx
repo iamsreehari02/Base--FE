@@ -1,49 +1,45 @@
 // CommonButton.tsx
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ImageSourcePropType,
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
 interface CommonButtonProps {
   onPress?: () => void;
   label: string;
   bgColor?: string;
-  icon?: string;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   fontColor?: string;
+  borderWidth?: number;
+  borderClr?: string;
 }
 
 const CommonButton: React.FC<CommonButtonProps> = ({
   onPress,
   label,
   bgColor,
-  icon,
+  icon: Icon,
   fontColor,
+  borderWidth,
+  borderClr,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[
         styles.buttonContainer,
-        { backgroundColor: bgColor ? bgColor : "#F16023" },
+        {
+          backgroundColor: bgColor ? bgColor : "#F16023",
+          borderWidth: borderWidth,
+          borderColor: borderClr,
+        },
       ]}
     >
-      {icon ? (
+      {Icon ? (
         <View style={styles.labelWithIcon}>
-          <Image
-            source={icon}
-            alt="Social Input Icons"
-            width={10}
-            height={10}
-          />
+          <Icon width={20} height={20} fill={fontColor ? fontColor : "white"} />
           <Text
             style={[styles.label, { color: fontColor ? fontColor : "white" }]}
           >
-            {label}
+            {label.toUpperCase()}
           </Text>
         </View>
       ) : (
@@ -71,11 +67,12 @@ const styles = StyleSheet.create({
   labelWithIcon: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
   },
   icon: {
     marginRight: 5,
   },
   label: {
-    fontSize: 16,
+    fontSize: 13,
   },
 });

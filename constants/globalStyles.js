@@ -7,7 +7,7 @@ export const globalStyles = StyleSheet.create({
     paddingBottom: "5%",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   subContainer: {
     paddingTop: "15%",
@@ -40,5 +40,10 @@ export const globalStyles = StyleSheet.create({
   soldStyle: { backgroundColor: "" },
   orangeText: {
     color: "#F16023",
+  },
+  absoluteBTN: {
+    position: "absolute",
+    bottom: 25,
+    width: "100%",
   },
 });

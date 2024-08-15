@@ -9,17 +9,19 @@ import {
 
 interface TextInputProps extends RNTextInputProps {
   label?: string;
+  inLineDesign?: boolean;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
   label,
   placeholder,
+  inLineDesign,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <View style={inLineDesign ? styles.inLineContainer : styles.container}>
       <Text style={styles.label}>{label}</Text>
       <RNTextInput
         style={[styles.input, isFocused && styles.inputFocused]}
@@ -52,6 +54,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   inputFocused: {
-    borderBottomColor: "#007AFF", // Change this color to your desired focus color
+    borderBottomColor: "#007AFF",
+  },
+  inLineContainer: {
+    width: "49%",
   },
 });
